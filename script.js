@@ -1,21 +1,27 @@
 let currentQuestionIndex = 0;
 const questions = [
-    // Populate this array with your questions and answers
-    // Example: { question: "Question 1", answers: ["Option A", "Option B", "Option C", "Option D"] },
-    // ...
+    {
+        question: "Ms. Ortega’s development team contributed ——– to the successful launch of the newest mobile application.",
+        answers: [
+            "(A) automatically",
+            "(B) substantially",
+            "(C) sharply",
+            "(D) accordingly"
+        ],
+        correctAnswer: "(B) substantially"
+    },
+    // 他の問題をここに追加...
 ];
 
 function displayQuestion() {
     const questionElement = document.getElementById('question');
-    const answerOptionsElement = document.getElementById('answer-options');
-    
+    const answersElement = document.getElementById('answers');
     questionElement.innerText = questions[currentQuestionIndex].question;
-    answerOptionsElement.innerHTML = '';
-
+    answersElement.innerHTML = '';
     questions[currentQuestionIndex].answers.forEach(answer => {
         const answerDiv = document.createElement('div');
         answerDiv.innerText = answer;
-        answerOptionsElement.appendChild(answerDiv);
+        answersElement.appendChild(answerDiv);
     });
 }
 
@@ -26,10 +32,11 @@ function setupNextButton() {
         if (currentQuestionIndex < questions.length) {
             displayQuestion();
         } else {
-            alert('End of questions');
+            alert('問題の終わりです');
         }
     });
 }
 
 displayQuestion();
 setupNextButton();
+
